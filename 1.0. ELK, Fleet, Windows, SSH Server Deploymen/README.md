@@ -1,4 +1,6 @@
-# Elasticsearch Setup
+# 1.0 ELK, Fleet, Windows, and SSH Server Deployment 
+
+## Elasticsearch Setup
 
 1.0. Deploy an Ubuntu server with 80GB of storage and 16GB of RAM </br>
 1.1. Once the server has been deployed, SSH into the machine and update it 
