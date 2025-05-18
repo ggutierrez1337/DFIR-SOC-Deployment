@@ -13,24 +13,24 @@ This project simulates a functional Security Operations Center (SOC) environment
 
 ## Tools and Utilities
 
-- **Elastic Stack (ELK)** – Log ingestion, alerting, and dashboarding  
+- **ELK Stack (Elasticsearch, Logstash, Kibana)** – Event Searching, Log ingestion, alerting, and dashboarding  
 - **Elastic Defend** – Endpoint Detection and Response (EDR)  
-- **Fleet Server** – Agent management for Elastic integrations  
-- **Mythic C2** – Command and control framework for payload delivery and management  
-- **osTicket** – Open-source ticketing system for alert tracking and response documentation  
-- **Ubuntu 22.04 & Windows Server** – Hosts for agents and targets  
-- **Kibana** – Visualization and search interface for ELK  
-- **Kali Linux** – Red team emulation and payload launch point  
+- **Fleet Server** – Agent management for Elastic integrations   
+- **Mythic C2** – Command and control framework for payload delivery and exploitation  
+- **osTicket** – Open-source ticketing system for alert tracking and response logging  
+- **Ubuntu 22.04 & Windows Server** – Target hosts for RDP/SSH Brute Force Attacks and C2 agent deployment
+- **Kali Linux** – Red team emulation and C2 payload deployment site  
 
 ---
 
 ## Environments
 
-- **Elastic Server**: Ubuntu-based ELK deployment with Fleet Server installed for managing agents  
+- **Elastic Server**: Ubuntu-based ELK deployment
+- **Fleet Server**: Centralized management hub for Elastic Agents  
 - **Windows Server 2019/2022**: Endpoint configured with Elastic Defend for detection of adversary activity  
 - **Linux (Ubuntu)**: SSH server configured for brute force attack simulation  
 - **Kali Linux**: Used to deploy and control Mythic C2 and simulate attacks  
-- **osTicket Web Interface**: Running on Linux for managing alerts and case documentation  
+- **osTicket Server**: Running on Linux for managing alerts and case documentation  
 
 ---
 
