@@ -1,19 +1,19 @@
 # Elasticsearch Setup
 
-1. Deploy an Ubuntu server with 80GB of storage and 16GB of RAM
-2. Once the server has been deployed, SSH into the machine and update it 
+1.0. Deploy an Ubuntu server with 80GB of storage and 16GB of RAM </br>
+1.1. Once the server has been deployed, SSH into the machine and update it 
 
 ```powershell
 ssh root@108.61.119.236
 apt update && upgrade -y
 ```
 
-1. In Google, search **Download Elasticsearch** and select the option
-2. Select **deb x86_64** then right click the **Download** button and select, **Copy Link Address**
+1.2. In Google, search **Download Elasticsearch** and select the option </br>
+1.3. Select **deb x86_64** then right click the **Download** button and select, **Copy Link Address**
 
 ![Screenshot_(776)](https://github.com/user-attachments/assets/04063ba9-9c63-4af0-9711-922a8006c90e)
 
-1. Back in the server, input the following command
+1.4. Back in the server, input the following command
 
 ```powershell
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.17.0-amd64.deb
@@ -21,7 +21,7 @@ wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.17.0-a
 
 ![Screenshot_(778)](https://github.com/user-attachments/assets/0f9d75b5-8c3d-435c-bc82-9900fb4dd8bb)
 
-1. Install elasticsearch
+1.5. Install elasticsearch
 
 ```powershell
 dpkg -i elasticsearch-8.17.0.amd64.deb
@@ -29,22 +29,22 @@ dpkg -i elasticsearch-8.17.0.amd64.deb
 
 ![Screenshot_(779)](https://github.com/user-attachments/assets/25211e40-cf61-462f-97ff-1e9ba8bca145)
 
-1. Under **Security autoconfiguration information,** a default password will be provided for the superuser. Make sure to save the password
+1.6. Under **Security autoconfiguration information,** a default password will be provided for the superuser. Make sure to save the password
 
-1. Change into the directory where the configuration file for elasticsearch is stored and nano into the **elasticsearch.yml** file
+1.7. Change into the directory where the configuration file for elasticsearch is stored and nano into the **elasticsearch.yml** file
 
 ```powershell
 cd /etc/elasticsearch
 nano elasticsearch.yml
 ```
 
-1. In order for the SOC Machine to reach the elasticsearch server, the Public IP of the server needs to be input in the .yml file under **network.host**
+1.8. In order for the SOC Machine to reach the elasticsearch server, the Public IP of the server needs to be input in the .yml file under **network.host**
     - Ensure to uncomment [**network.host](http://network.host)** and **http.port**
     - Once finished, select CTRL + X + Y + ENTER
 
 ![Screenshot_(782)](https://github.com/user-attachments/assets/aa700005-e47b-4c89-8c9e-6b46fccd2613)
 
-1. Start up Elasticsearch
+1.9. Start up Elasticsearch
 
 ```powershell
 systemctl daemon-reload
@@ -57,8 +57,8 @@ systemctl status elasticsearch.service
 
 ## Setting up Kibana
 
-1. Navigate to https://www.elastic.co/downloads/kibana
-2. Select the Download type as **Deb 86 x64** and copy the link address to the server instance
+1.1.0 Navigate to https://www.elastic.co/downloads/kibana
+1.1.1. Select the Download type as **Deb 86 x64** and copy the link address to the server instance
 
 ```powershell
 wget https://artifacts.elastic.co/downloads/kibana/kibana-8.17.0-amd64.deb
@@ -66,7 +66,7 @@ wget https://artifacts.elastic.co/downloads/kibana/kibana-8.17.0-amd64.deb
 
 ![Screenshot_(784)](https://github.com/user-attachments/assets/5266d662-57a4-479f-b910-c2a45736e74c)
 
-1. Install Kibana
+1.1.2. Install Kibana
 
 ```powershell
 dpkg -i kibana-8.17.0-amd64.deb
@@ -74,7 +74,7 @@ dpkg -i kibana-8.17.0-amd64.deb
 
 ![Screenshot_(785)](https://github.com/user-attachments/assets/32795ddf-1bc3-4e38-bb6d-ab3d55666c4f)
 
-1. Go to the config file of Kibana
+1.1.3. Go to the config file of Kibana
     - Uncomment **server.port** and **server.host**
     - For server host, input the **Public IP** of the VM
 
@@ -84,7 +84,7 @@ nano /etc/kibana/kibana.yml
 
 ![Screenshot_(786)](https://github.com/user-attachments/assets/1314c5ca-3aa7-4015-b538-24073f0478d6)
 
-1. Enable and start Kibana
+1.1.4. Enable and start Kibana
 
 ```powershell
 systemctl daemon-reload
@@ -95,8 +95,8 @@ systemctl status kibana.service
 
 ![Screenshot_(787)](https://github.com/user-attachments/assets/6ebb96fa-5fa2-498b-95af-95c8ab1359e5)
 
-1. Generate an elasticsearch enrollment token for Kibana
-2. cd to the **/bin** directory of elasticsearch
+1.1.5. Generate an elasticsearch enrollment token for Kibana
+1.1.6. cd to the **/bin** directory of elasticsearch
     - The one we’re interested in is **elasticsearch-create-enrollment-token**
 
 ```powershell
@@ -108,18 +108,18 @@ cd /usr/share/elasticsearch/bin
 
 ![Screenshot_(789)](https://github.com/user-attachments/assets/46a60642-aa89-46a7-988c-a3a1fe3def07)
 
-1. Save the enrollment token as it will be used for later use
-2. Under firewall rules, allow access from the Public IP and Port. Make sure to do it within the Ubuntu Server as well
+1.1.7. Save the enrollment token as it will be used for later use </br>
+1.1.8. Under firewall rules, allow access from the Public IP and Port. Make sure to do it within the Ubuntu Server as well
 
 ```powershell
 ufw allow 5601
 ```
 
-1. Access the Kibana instance by inputting in the following in the URL - **Server_IP:5601** and paste the enrollment token generated from earlier
+1.1.9. Access the Kibana instance by inputting in the following in the URL - **Server_IP:5601** and paste the enrollment token generated from earlier
 
 ![Screenshot_(791)](https://github.com/user-attachments/assets/4f783ede-32be-4133-a4cc-94cb48529122)
 
-1. Back in the server instance, cd to **/bin** of Kibana. The one of interest is **kibana-verification-code.** A verification code will then be generated for Kibana
+1.2.0 Back in the server instance, cd to **/bin** of Kibana. The one of interest is **kibana-verification-code.** A verification code will then be generated for Kibana
 
 ```powershell
 cd /usr/share/kibana/bin/
@@ -130,14 +130,14 @@ cd /usr/share/kibana/bin/
 
 ![Screenshot_(794)](https://github.com/user-attachments/assets/48d05d23-91ad-4466-bb3c-05bcb45d3337)
 
-1. Input the verification code into elasticsearch setup. Input the username and password generated by elasticsearch when it was installed
+1.2.1 Input the verification code into elasticsearch setup. Input the username and password generated by elasticsearch when it was installed
 
 ![Screenshot_(795)](https://github.com/user-attachments/assets/5d87e916-2efd-43fa-9246-d438de6e7537)
 
 ![Screenshot_(796)](https://github.com/user-attachments/assets/93cb1f19-6392-4678-9f7a-20340c3cc7d9)
 
-1. Generate encryption keys for Kibana otherwise rules will not be able to be deleted or modified after restart
-2. In the following directory, **/usr/share/kibana/bin,** the two main binaries of importance are:
+1.2.2. Generate encryption keys for Kibana otherwise rules will not be able to be deleted or modified after restart </br>
+1.2.3. In the following directory, **/usr/share/kibana/bin,** the two main binaries of importance are:
     - **kibana-encryption-keys**
     - **kibana-keystore**
 
@@ -145,7 +145,7 @@ cd /usr/share/kibana/bin/
 ./kibana-encryption-keys generate
 ```
 
-1. Once the encryption keys have been generated, save to notepad and now add to the keystore
+1.2.4. Once the encryption keys have been generated, save to notepad and now add to the keystore
 
 ```powershell
 ./kibana-keystore add
@@ -153,7 +153,7 @@ cd /usr/share/kibana/bin/
 
 ![Screenshot_(797)](https://github.com/user-attachments/assets/6ae03704-bbf9-4143-b6b4-5d7beea90cde)
 
-1. Restart Kibana and in elasticsearch under the security tab → Alerts, you should no longer receive a warning
+1.2.5. Restart Kibana and in elasticsearch under the security tab → Alerts, you should no longer receive a warning
 
 ```powershell
 systemctl restart
@@ -163,8 +163,8 @@ systemctl restart
 
 # Windows Server Deployment
 
-1. Deploy a Windows Server 2022 instance with at least 2 CPUs, 55 GB of storage, and 2 GB of RAM
-2. Check if the Windows Server is able to be connected to via RDP by searching **Remote Desktop** and inputting the Public IP of the Server 
+1.2.6. Deploy a Windows Server 2022 instance with at least 2 CPUs, 55 GB of storage, and 2 GB of RAM </br>
+1.2.7. Check if the Windows Server is able to be connected to via RDP by searching **Remote Desktop** and inputting the Public IP of the Server 
 
 ![Screenshot_(798)](https://github.com/user-attachments/assets/75f541ea-93ec-49fa-abfd-4ee6d3283e68)
 
@@ -183,24 +183,24 @@ There are **two types** of agents
 
 ## Elastic Agent and Fleet Server Setup
 
-1. Deploy an Ubuntu 22.04 server with at least 1 CPU, 4GB RAM, and 55GB of Storage
-2. Make sure the ELK Server is running and in the interface of the hamburger menu select, **Fleet** under **Management** tab
+1.2.8. Deploy an Ubuntu 22.04 server with at least 1 CPU, 4GB RAM, and 55GB of Storage </br>
+1.2.9. Make sure the ELK Server is running and in the interface of the hamburger menu select, **Fleet** under **Management** tab
 
 ![Screenshot_(800)](https://github.com/user-attachments/assets/4fcfb5cb-2eda-4e7c-a6a1-63369ca2ddda)
 
-1. Select **Add Fleet Server** and choose **Quick Start** and input the name/IP of the fleet server created
+1.3.0. Select **Add Fleet Server** and choose **Quick Start** and input the name/IP of the fleet server created
 
 ![Screenshot_(801)](https://github.com/user-attachments/assets/3e697526-5eb7-4e60-a0d9-5e2fe12b02c1)
 
-1. In the firewall for DFIR-SOC, allow all ports to be accessed by the Fleet Server by inputting the custom IP
-2. SSH into the ELK Server and allow port 9200 because that is the port for elasticsearch
+1.3.1. In the firewall for DFIR-SOC, allow all ports to be accessed by the Fleet Server by inputting the custom IP </br>
+1.3.2. SSH into the ELK Server and allow port 9200 because that is the port for elasticsearch
     - This is because elasticsearch listens on port 9200 and the fleet server needs to be able to access to the ELK Server
 
 ```powershell
 ufw allow 9200
 ```
 
-1. SSH into the Fleet Server instance and run the command provided by elasticsearch
+1.3.3. SSH into the Fleet Server instance and run the command provided by elasticsearch
 
 ```powershell
 curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-8.17.0-linux-x86_64.tar.gz
@@ -214,28 +214,28 @@ sudo ./elastic-agent install \
   --fleet-server-port=8220
 ```
 
-1. If done correctly, on the elasticsearch site, it should prompt **Fleet Server Connected**
+1.3.4. If done correctly, on the elasticsearch site, it should prompt **Fleet Server Connected**
 
 ![Screenshot_(802)](https://github.com/user-attachments/assets/ae7f9c4a-e544-42c1-af32-c481e7db51f3)
 
-1. Continue the enrollment and specify the hosts that should be monitored. Since we want to monitor the Windows Server, input a policy name and select the agent type that will be installed **Windows**
+1.3.5. Continue the enrollment and specify the hosts that should be monitored. Since we want to monitor the Windows Server, input a policy name and select the agent type that will be installed **Windows**
 
-![Screenshot (803).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/f9fa8d77-ae96-466c-947c-2aa7f6d01a76/Screenshot_(803).png)
+![Screenshot_(803)](https://github.com/user-attachments/assets/88235e6e-e2f6-40de-8629-d3c27e3323d8)
 
-1. In the Fleet Server run the following command to allow the firewall to receive access from the port it runs on 8220  and 443
+1.3.6. In the Fleet Server run the following command to allow the firewall to receive access from the port it runs on 8220  and 443
 
 ```powershell
 ufw allow 8220
 ufw allow 443
 ```
 
-1. In elasticsearch under Manage → Fleet change the port connection from 443 to 8220 since Fleet runs on 8220
+1.3.7. In elasticsearch under Manage → Fleet change the port connection from 443 to 8220 since Fleet runs on 8220
 
-![Screenshot (805).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/301c92cb-09bb-44af-8fb1-6a43a3ab01c2/Screenshot_(805).png)
+![Screenshot_(805)](https://github.com/user-attachments/assets/788fbfa2-86e8-46f5-9952-9583b95f6e11)
 
-![Screenshot (806).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/1d719e4f-669a-471d-a267-b83778148c3e/Screenshot_(806).png)
+![Screenshot_(806)](https://github.com/user-attachments/assets/dcf81475-cf62-4505-9c7b-f253ad261014)
 
-1. Connect to the Windows Server created earlier and run PowerShell as Admin. Input the command provided by elasticsearch. Ensure to change the port from 443 to 8220
+1.3.8. Connect to the Windows Server created earlier and run PowerShell as Admin. Input the command provided by elasticsearch. Ensure to change the port from 443 to 8220
     - At the end of the command add **—insecure** because a self signed certificate will be presented
 
 ```powershell
@@ -246,13 +246,13 @@ cd elastic-agent-8.17.0-windows-x86_64
 .\elastic-agent.exe install --url=https://45.76.22.179:**8220** --enrollment-token=WXhySEZKUUJDbDgzWE9GTWVHWW86cy1uRkdRelpSeVNPejljMll1WnZ3UQ== **--insecure**
 ```
 
-![Screenshot (804).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/c9cc0c19-cf8a-4fe4-9723-9c45801eca86/Screenshot_(804).png)
+![Screenshot_(804)](https://github.com/user-attachments/assets/bf8536c1-e3be-466a-9fec-ce20b8feecef)
 
-1. Back in elastic, under **Fleet → Agents,** the Windows Server should be available if the agent was successfully installed
+1.3.9. Back in elastic, under **Fleet → Agents,** the Windows Server should be available if the agent was successfully installed
 
-![Screenshot (807).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/44eafe87-3615-4171-a87c-e0b0c141fcc5/Screenshot_(807).png)
+![Screenshot_(807)](https://github.com/user-attachments/assets/ac0d60b4-3b6a-4bb5-9e11-41795bc9dd58)
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/b5f87923-cb88-410a-b35e-57deb7dc07ad/image.png)
+![image 1](https://github.com/user-attachments/assets/e374c60a-82fe-4276-8bb1-78ef0a2bd601)
 
 # Sysmon
 
@@ -276,34 +276,34 @@ System Monitor (Sysmon) is a Windows system service and device driver that, once
 2. Search sysmon in google and select the link under MSFT Learn
 3. Select Download Sysmon
 
-![Screenshot (809).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/57ad41cb-0ba7-4dee-9c62-085ef8c83a9e/Screenshot_(809).png)
+![Screenshot_(809)](https://github.com/user-attachments/assets/bb030275-3fd1-4a97-bbf1-df5c103b8f49)
 
-1. Once downloaded, extract all contents from the sysmon folder
-2. Download the config file for sysmon which will be under the name of **sysmonconfig.xml**
+1.4.0. Once downloaded, extract all contents from the sysmon folder </br>
+1.4.1. Download the config file for sysmon which will be under the name of **sysmonconfig.xml**
 
-![Screenshot (810).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/c53afe83-99e4-41b3-8104-7f8923129cb3/Screenshot_(810).png)
+![Screenshot_(810)](https://github.com/user-attachments/assets/4c02de6f-9906-44c9-a311-b03db627c621)
 
-![Screenshot (811).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/cfe8963a-1345-4db3-9a5a-3314e401fdce/Screenshot_(811).png)
+![Screenshot_(811)](https://github.com/user-attachments/assets/2c9eb5ce-c6e0-41bb-a7a2-25a2e271e4e5)
 
-1. On the right hand side, select **Raw.** Right click the page and select **Save as.** Save the config file to **sysmon** directory downloaded earlier
+1.4.2. On the right hand side, select **Raw.** Right click the page and select **Save as.** Save the config file to **sysmon** directory downloaded earlier
 
-![Screenshot (812).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/d70a6c96-b082-45da-84bb-34a6e76f571e/Screenshot_(812).png)
+![Screenshot_(812)](https://github.com/user-attachments/assets/66fbdec1-8d13-4830-9769-def4c32b7816)
 
-1. Open PowerShell as admin and cd into the the directory of where sysmon is located
+1.4.3. Open PowerShell as admin and cd into the the directory of where sysmon is located
 
 ```powershell
 cd C:\Users\Administrator\Downloads\Sysmon
 ```
 
-1. Install sysmon and the install can be verified by searching **Services** and checking Sysmon64 is on the machine
+1.4.4. Install sysmon and the install can be verified by searching **Services** and checking Sysmon64 is on the machine
 
 ```powershell
 .\Sysmon64.exe -i sysmonconfig.xml
 ```
 
-![Screenshot (813).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/bb090dbe-6c4c-4c7c-b6f9-74c22d0579b7/Screenshot_(813).png)
+![Screenshot_(813)](https://github.com/user-attachments/assets/77bf62c5-3891-4e32-8eb5-843e39755822)
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/8f557724-0280-41d3-97f7-8e29ebb03dd1/image.png)
+![image 2](https://github.com/user-attachments/assets/22d36d70-941f-4b5e-96cf-aa56aac2216b)
 
 # Elasticsearch Data Ingestion
 
@@ -315,67 +315,67 @@ cd C:\Users\Administrator\Downloads\Sysmon
     - This is done in order to find the **channel name** for sysmon that way Elasticsearch can collect the logs from it
     - **Full name** should be selected for the channel name
 
-![Screenshot (815).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/59b37324-f547-4b7f-a8df-ebe5be601f20/Screenshot_(815).png)
+![Screenshot_(815)](https://github.com/user-attachments/assets/1af934fd-a9ad-4b1c-b541-ea5b3e515f05)
 
-![Screenshot (816).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/d5329d48-c2ad-468d-8d27-570b106d6040/Screenshot_(816).png)
+![Screenshot_(816)](https://github.com/user-attachments/assets/a5ee2475-b043-4d0c-9552-987d2e740428)
 
-1. Add Full name of Sysmon to **Channel Name** back in Elasticsearch. Leave everything else as default
+1.4.5. Add Full name of Sysmon to **Channel Name** back in Elasticsearch. Leave everything else as default
 
-![Screenshot (817).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/72600a62-d845-48b0-9659-9ddf55d603b4/Screenshot_(817).png)
+![Screenshot_(817)](https://github.com/user-attachments/assets/5e14a0e1-2d6a-435d-80b2-c9a366581c33)
 
-1. Under **Where to add this integration,** select **add to an existing host.** And under **Agent Policies,** select the policy that has the agent deployed on Windows Server. Once done, select Save and Continue
+1.4.6. Under **Where to add this integration,** select **add to an existing host.** And under **Agent Policies,** select the policy that has the agent deployed on Windows Server. Once done, select Save and Continue
 
-![Screenshot (819).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/67523824-5d65-4dcc-9f6a-f1e05d131a14/Screenshot_(819).png)
+![Screenshot_(819)](https://github.com/user-attachments/assets/4d4e4fb4-ad2d-4797-b32b-e99160acbf9b)
 
-1. Sysmon has now been added to the Windows Policy
+1.4.7. Sysmon has now been added to the Windows Policy
 
-![Screenshot (820).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/cb85bf88-2844-4d94-ad14-55f4b0f82dc9/Screenshot_(820).png)
+![Screenshot_(820)](https://github.com/user-attachments/assets/d583e54a-4a17-4c12-93d0-75807a70d0db)
 
 ## Windows Defender Log Ingestion
 
-1. Select **Add Custom Windows Event Logs** and name the integration 
-2. Back in the Windows Server in Event Viewer, the channel name can be found under **Application and Services Logs → Microsoft → Windows → Windows Defender →** right click **Operational** and select Properties
+1.4.8. Select **Add Custom Windows Event Logs** and name the integration  </br>
+1.4.9. Back in the Windows Server in Event Viewer, the channel name can be found under **Application and Services Logs → Microsoft → Windows → Windows Defender →** right click **Operational** and select Properties
 
-![Screenshot (821).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/757a5dc0-816a-429a-a1fb-a70d1b510587/Screenshot_(821).png)
+![Screenshot_(821)](https://github.com/user-attachments/assets/b801bbeb-20bd-4308-9a0e-d49d4423b0d8)
 
-1. Informational Logs are not required, but for this project Event IDs **1116**, **1117**, **5001** will only be collected
-2. Copy the full name and add it to the Channel Name back in Elasticsearch
+1.5.0. Informational Logs are not required, but for this project Event IDs **1116**, **1117**, **5001** will only be collected </br>
+1.5.1. Copy the full name and add it to the Channel Name back in Elasticsearch
 
-![Screenshot (822).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/1506d7c9-2d0a-46a5-b63c-43b0a28479c2/Screenshot_(822).png)
+![Screenshot_(822)](https://github.com/user-attachments/assets/8e38b3e4-0f0f-4994-8220-cf5a0e5403c6)
 
-1. Select **Advanced Options.** Under **Event ID,** include **1116, 1117, 5001**
-2. Again, under **Where to add this integration?** Select the Policy for the Windows Agent
+1.5.2. Select **Advanced Options.** Under **Event ID,** include **1116, 1117, 5001**
+1.5.3. Again, under **Where to add this integration?** Select the Policy for the Windows Agent
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/df9455eb-2d79-4d55-a6c0-d0b200a5e0a3/image.png)
+![image 3](https://github.com/user-attachments/assets/11febff2-fd0b-4669-9d74-a07a81894ac2)
 
-1. Both Sysmon and Defender logs should now be pulled into the Elasticsearch instance
+1.5.4. Both Sysmon and Defender logs should now be pulled into the Elasticsearch instance
 
-![Screenshot (824).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/b4f98054-99f0-41e6-b4bb-39edc0946e3c/Screenshot_(824).png)
+![Screenshot_(824)](https://github.com/user-attachments/assets/36bee3fd-10cf-4c50-8d24-bbb82f622f3f)
 
 **Note -** If CPU and Memory Usage are unavailable in the specific machine being monitored in the **Fleet** tab, there’s a chance that the firewall is blocking traffic, so try to allow traffic to the ELK Server on port 9200
 
-![Screenshot (825).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/30e100db-6c90-46cb-92cb-eb3f36f2efeb/Screenshot_(825).png)
+![Screenshot_(825)](https://github.com/user-attachments/assets/120a8b1b-5e27-4de6-ba0d-bd8be7063320)
 
-1. In the **Discover** tab verify that logs are coming in from Sysmon by searching **winlog.event_id: 1.** Expand any of the events and select **Page 2.** Check that the **event_provider** is **Microsoft-Windows-System**
+1.5.5. In the **Discover** tab verify that logs are coming in from Sysmon by searching **winlog.event_id: 1.** Expand any of the events and select **Page 2.** Check that the **event_provider** is **Microsoft-Windows-System**
 
-![Screenshot (826).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/bee0bb56-3c9d-4c8f-96c5-453e1520d756/Screenshot_(826).png)
+![Screenshot_(826)](https://github.com/user-attachments/assets/bad97f78-3da8-4a2e-9ef4-2dadc5ae7310)
 
 # Ubuntu Server 24.02 SSH Server Installation
 
-1. Deploy an Ubuntu 24.04 server with at least 2 GB of RAM, 55 GB of Storage, and 1 CPU
+1.5.6. Deploy an Ubuntu 24.04 server with at least 2 GB of RAM, 55 GB of Storage, and 1 CPU
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/f244cfb2-7002-44b2-bb32-442b1a82dd56/image.png)
+![image 4](https://github.com/user-attachments/assets/fa7a5295-9a57-471c-af07-2ab02814e686)
 
-1. SSH into the server and cd to the directory containing the **auth.log** 
+1.5.7. SSH into the server and cd to the directory containing the **auth.log** 
     - This will contain authentication attempts
 
 ```powershell
 cd /var/log
 ```
 
-![Screenshot (828).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/ab496c8e-0ca4-4237-b2a2-2376bb6c7a88/Screenshot_(828).png)
+![Screenshot_(828)](https://github.com/user-attachments/assets/898b6b65-5c2b-46e4-b745-6bf1fe528313)
 
-1. Failed passwords can be filtered by running the following 
+1.5.8. Failed passwords can be filtered by running the following 
     - **cut** helps select data from a particular column specified by a delimiter
     - The following when checking for root will paste all the IPs of the those that tried to SSH into the SSH Server
 
@@ -386,30 +386,30 @@ grep -i failed auth.log | grep -i root | cut -d ' ' -f 9
 
 ## Elastic Agent Installation on SSH Server
 
-1. In Elasticsearch, go to the **Fleet** tab under **Management** 
-2. Select **Agent Policy** and create a new policy for the SSH Server
+1.5.9. In Elasticsearch, go to the **Fleet** tab under **Management**  </br>
+1.6.0. Select **Agent Policy** and create a new policy for the SSH Server
 
-![Screenshot (829).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/d9367d36-574e-49c3-bcbb-90df37a52b7c/Screenshot_(829).png)
+![Screenshot_(829)](https://github.com/user-attachments/assets/031d4153-a7fb-4a66-a12c-c6a96c3167c0)
 
-1. Go to the **Agents** tab and select, **Add Agent.** Select the policy that was just created and **enroll in Fleet**
+1.6.1. Go to the **Agents** tab and select, **Add Agent.** Select the policy that was just created and **enroll in Fleet**
 
-![Screenshot (830).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/f3aeb35a-e29f-4505-bb09-e10e88cce8cd/Screenshot_(830).png)
+![Screenshot_(830)](https://github.com/user-attachments/assets/2cb122ba-6514-4166-a775-3089628198ef)
 
-1. For the OS, ensure to select **Linux Tar** since this is a linux-based server the agent will be installed on 
+1.6.2. For the OS, ensure to select **Linux Tar** since this is a linux-based server the agent will be installed on 
 
-![Screenshot (831).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/62dd5345-81a4-4e45-8af1-0263130ad1d2/Screenshot_(831).png)
+![Screenshot_(831)](https://github.com/user-attachments/assets/e734c97d-63d4-4770-9815-d21367c84349)
 
-1. Copy and Paste the command to the home directory of the SSH Server
+1.6.3. Copy and Paste the command to the home directory of the SSH Server
     - Be sure to add **- -insecure** to the end of the command because this is a self signed certification
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/fbc64a23-b21f-4309-ab97-1de9bd13f234/image.png)
+![image 5](https://github.com/user-attachments/assets/51e6522a-18f5-40ef-805f-8f9e76395877)
 
-![Screenshot (833).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/f76b45f7-9c06-4f7a-ae24-a737638865cc/Screenshot_(833).png)
+![Screenshot_(833)](https://github.com/user-attachments/assets/c735b5b8-47b2-4c36-b1e8-407ae37a77cb)
 
-1. If agent was successfully installed, back in the elastic agent enrollment section, it should confirm likewise
+1.6.4. If agent was successfully installed, back in the elastic agent enrollment section, it should confirm likewise
 
-![Screenshot (834).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/9a0cd882-fb9c-4627-87fd-a696bee1b11f/Screenshot_(834).png)
+![Screenshot_(834)](https://github.com/user-attachments/assets/993ee0e9-b195-4456-822d-c5e196227c36)
 
-1. In the **Discover** tab under **agent_name,** it can be confirmed that the logs and agent are being generated from the **SSH Server** 
+1.6.5. In the **Discover** tab under **agent_name,** it can be confirmed that the logs and agent are being generated from the **SSH Server** 
 
-![Screenshot (835).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/bde5abf0-4166-44f0-9492-f6c65f0fb656/Screenshot_(835).png)
+![Screenshot_(835)](https://github.com/user-attachments/assets/fa329224-ddd7-475c-aee8-ba6bcc81f2ce)
