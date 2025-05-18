@@ -11,7 +11,7 @@ apt update && upgrade -y
 1. In Google, search **Download Elasticsearch** and select the option
 2. Select **deb x86_64** then right click the **Download** button and select, **Copy Link Address**
 
-![Screenshot (776).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/ae4ea87b-0944-4e15-92b1-110ec365df3d/Screenshot_(776).png)
+![Screenshot_(776)](https://github.com/user-attachments/assets/04063ba9-9c63-4af0-9711-922a8006c90e)
 
 1. Back in the server, input the following command
 
@@ -19,7 +19,7 @@ apt update && upgrade -y
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.17.0-amd64.deb
 ```
 
-![Screenshot (778).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/957a2118-2499-4d93-b35d-5076043f5141/Screenshot_(778).png)
+![Screenshot_(778)](https://github.com/user-attachments/assets/0f9d75b5-8c3d-435c-bc82-9900fb4dd8bb)
 
 1. Install elasticsearch
 
@@ -27,7 +27,7 @@ wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.17.0-a
 dpkg -i elasticsearch-8.17.0.amd64.deb
 ```
 
-![Screenshot (779).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/d6fa9653-20d9-46f7-a97d-6b4b5f67f579/Screenshot_(779).png)
+![Screenshot_(779)](https://github.com/user-attachments/assets/25211e40-cf61-462f-97ff-1e9ba8bca145)
 
 1. Under **Security autoconfiguration information,** a default password will be provided for the superuser. Make sure to save the password
 
@@ -42,7 +42,7 @@ nano elasticsearch.yml
     - Ensure to uncomment [**network.host](http://network.host)** and **http.port**
     - Once finished, select CTRL + X + Y + ENTER
 
-![Screenshot (782).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/4e45f34d-f080-486f-b9fb-c22c0e81fee6/Screenshot_(782).png)
+![Screenshot_(782)](https://github.com/user-attachments/assets/aa700005-e47b-4c89-8c9e-6b46fccd2613)
 
 1. Start up Elasticsearch
 
@@ -53,7 +53,7 @@ systemctl start elasticsearch.service
 systemctl status elasticsearch.service
 ```
 
-![Screenshot (783).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/76444cb5-cad9-4eb9-98fe-575c8ecc8d12/Screenshot_(783).png)
+![Screenshot_(783)](https://github.com/user-attachments/assets/38cf25a0-ef41-4790-9809-233b31dc490e)
 
 ## Setting up Kibana
 
@@ -64,7 +64,7 @@ systemctl status elasticsearch.service
 wget https://artifacts.elastic.co/downloads/kibana/kibana-8.17.0-amd64.deb
 ```
 
-![Screenshot (784).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/4b94cdcf-bfa0-4cfb-acd8-ab41e45d4eb9/Screenshot_(784).png)
+![Screenshot_(784)](https://github.com/user-attachments/assets/5266d662-57a4-479f-b910-c2a45736e74c)
 
 1. Install Kibana
 
@@ -72,7 +72,7 @@ wget https://artifacts.elastic.co/downloads/kibana/kibana-8.17.0-amd64.deb
 dpkg -i kibana-8.17.0-amd64.deb
 ```
 
-![Screenshot (785).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/66bf6534-2f97-4f3c-bdce-6a668100e3c8/Screenshot_(785).png)
+![Screenshot_(785)](https://github.com/user-attachments/assets/32795ddf-1bc3-4e38-bb6d-ab3d55666c4f)
 
 1. Go to the config file of Kibana
     - Uncomment **server.port** and **server.host**
@@ -82,7 +82,7 @@ dpkg -i kibana-8.17.0-amd64.deb
 nano /etc/kibana/kibana.yml
 ```
 
-![Screenshot (786).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/604377de-6619-4d64-9d84-623f053715de/Screenshot_(786).png)
+![Screenshot_(786)](https://github.com/user-attachments/assets/1314c5ca-3aa7-4015-b538-24073f0478d6)
 
 1. Enable and start Kibana
 
@@ -93,7 +93,7 @@ systemctl start kibana.service
 systemctl status kibana.service
 ```
 
-![Screenshot (787).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/8f6d1c23-bf3a-4bb1-ae58-d4f154604014/Screenshot_(787).png)
+![Screenshot_(787)](https://github.com/user-attachments/assets/6ebb96fa-5fa2-498b-95af-95c8ab1359e5)
 
 1. Generate an elasticsearch enrollment token for Kibana
 2. cd to the **/bin** directory of elasticsearch
@@ -104,9 +104,9 @@ cd /usr/share/elasticsearch/bin
 ./elasticsearch-create-enrollment-token --scope kibana
 ```
 
-![Screenshot (788).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/2edab103-36c4-47a1-bcb8-53d87b6ffe0c/Screenshot_(788).png)
+![Screenshot_(788)](https://github.com/user-attachments/assets/65e6fb9a-78d9-45c8-b47b-6726fd39d9af)
 
-![Screenshot (789).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/e1779777-0551-4933-8e03-0454252ee7d0/Screenshot_(789).png)
+![Screenshot_(789)](https://github.com/user-attachments/assets/46a60642-aa89-46a7-988c-a3a1fe3def07)
 
 1. Save the enrollment token as it will be used for later use
 2. Under firewall rules, allow access from the Public IP and Port. Make sure to do it within the Ubuntu Server as well
@@ -117,7 +117,7 @@ ufw allow 5601
 
 1. Access the Kibana instance by inputting in the following in the URL - **Server_IP:5601** and paste the enrollment token generated from earlier
 
-![Screenshot (791).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/da555110-e8c5-4124-bc5a-06f9fb474dcc/Screenshot_(791).png)
+![Screenshot_(791)](https://github.com/user-attachments/assets/4f783ede-32be-4133-a4cc-94cb48529122)
 
 1. Back in the server instance, cd to **/bin** of Kibana. The one of interest is **kibana-verification-code.** A verification code will then be generated for Kibana
 
@@ -126,15 +126,15 @@ cd /usr/share/kibana/bin/
 ./kibana-verfication-code
 ```
 
-![Screenshot (792).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/19c5d10e-ba0c-48c4-b3ad-ac5a87adc0e3/Screenshot_(792).png)
+![Screenshot_(792)](https://github.com/user-attachments/assets/08da5bb8-e3d5-4951-b555-d5eea617ef99)
 
-![Screenshot (794).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/3ec44a5d-6003-42d6-8bd6-fff3640b719c/Screenshot_(794).png)
+![Screenshot_(794)](https://github.com/user-attachments/assets/48d05d23-91ad-4466-bb3c-05bcb45d3337)
 
 1. Input the verification code into elasticsearch setup. Input the username and password generated by elasticsearch when it was installed
 
-![Screenshot (795).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/ed05256a-5e32-4f7a-8dc2-649d834c5171/Screenshot_(795).png)
+![Screenshot_(795)](https://github.com/user-attachments/assets/5d87e916-2efd-43fa-9246-d438de6e7537)
 
-![Screenshot (796).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/420bea6a-7a43-469e-bf11-bc1f618357e4/Screenshot_(796).png)
+![Screenshot_(796)](https://github.com/user-attachments/assets/93cb1f19-6392-4678-9f7a-20340c3cc7d9)
 
 1. Generate encryption keys for Kibana otherwise rules will not be able to be deleted or modified after restart
 2. In the following directory, **/usr/share/kibana/bin,** the two main binaries of importance are:
@@ -151,7 +151,7 @@ cd /usr/share/kibana/bin/
 ./kibana-keystore add
 ```
 
-![Screenshot (797).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/74c28953-1228-4959-bcbb-322e7ebae83e/Screenshot_(797).png)
+![Screenshot_(797)](https://github.com/user-attachments/assets/6ae03704-bbf9-4143-b6b4-5d7beea90cde)
 
 1. Restart Kibana and in elasticsearch under the security tab → Alerts, you should no longer receive a warning
 
@@ -166,9 +166,9 @@ systemctl restart
 1. Deploy a Windows Server 2022 instance with at least 2 CPUs, 55 GB of storage, and 2 GB of RAM
 2. Check if the Windows Server is able to be connected to via RDP by searching **Remote Desktop** and inputting the Public IP of the Server 
 
-![Screenshot (798).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/aa76de5c-179a-4e25-88d4-006465bc49a9/Screenshot_(798).png)
+![Screenshot_(798)](https://github.com/user-attachments/assets/75f541ea-93ec-49fa-abfd-4ee6d3283e68)
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/691348af-e6b0-4d35-ae1b-4a6e3b73872d/image.png)
+![image](https://github.com/user-attachments/assets/7e8b7893-db48-430f-be6c-0c07a3120e41)
 
 # Fleet Server
 
@@ -186,11 +186,11 @@ There are **two types** of agents
 1. Deploy an Ubuntu 22.04 server with at least 1 CPU, 4GB RAM, and 55GB of Storage
 2. Make sure the ELK Server is running and in the interface of the hamburger menu select, **Fleet** under **Management** tab
 
-![Screenshot (800).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/340d6cd0-66d6-4435-8147-3f78a8259c41/Screenshot_(800).png)
+![Screenshot_(800)](https://github.com/user-attachments/assets/4fcfb5cb-2eda-4e7c-a6a1-63369ca2ddda)
 
 1. Select **Add Fleet Server** and choose **Quick Start** and input the name/IP of the fleet server created
 
-![Screenshot (801).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/0227b165-29b6-4497-a85c-f1301c7ff722/Screenshot_(801).png)
+![Screenshot_(801)](https://github.com/user-attachments/assets/3e697526-5eb7-4e60-a0d9-5e2fe12b02c1)
 
 1. In the firewall for DFIR-SOC, allow all ports to be accessed by the Fleet Server by inputting the custom IP
 2. SSH into the ELK Server and allow port 9200 because that is the port for elasticsearch
@@ -216,7 +216,7 @@ sudo ./elastic-agent install \
 
 1. If done correctly, on the elasticsearch site, it should prompt **Fleet Server Connected**
 
-![Screenshot (802).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/246692bd-cf92-4f91-8b4e-6d4c15c8bf7a/a76f79c3-e21f-42b4-aa3c-8cb967d27fd4/Screenshot_(802).png)
+![Screenshot_(802)](https://github.com/user-attachments/assets/ae7f9c4a-e544-42c1-af32-c481e7db51f3)
 
 1. Continue the enrollment and specify the hosts that should be monitored. Since we want to monitor the Windows Server, input a policy name and select the agent type that will be installed **Windows**
 
