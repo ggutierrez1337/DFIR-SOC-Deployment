@@ -70,16 +70,16 @@
 
 6.1.0. Check if the IP is known for this type activity using AbuseIPDB. It can be seen that this IP has been reported **17 times** regarding SSH and RDP Brute Force Activity 
 
-![image.png](attachment:a428ff97-ca2e-4c76-8ed9-c6ad189fab90:image.png)
+![image 9](https://github.com/user-attachments/assets/d12ac541-71fb-406a-a599-2a71ef6796ec)
 
 6.1.1. Using Elasticsearch, lookup the IP address to check if other usernames/user accounts might have been used as well. In this case, only **Administrator** was used and none of the attempts were successful
 
-![image.png](attachment:cc63eb7f-9aca-4de0-bdcb-c40967ca654b:image.png)
+![image 10](https://github.com/user-attachments/assets/4cf36e58-6f29-46df-a086-4c875f54ab6e)
 
 **Note -** If the authentication had been successful, taking down the **time and date** of logon helps 
 
 6.1.2. In OsTIcket, respond to the alert and ticket created according to your triage and actions that should be taken if necessary
 
-![Screenshot (1169).png](attachment:a0371672-da47-4f7c-8f20-60d9d052ba01:Screenshot_(1169).png)
+![Screenshot_(1169)](https://github.com/user-attachments/assets/117dc407-4228-47e9-93b2-5f23108eb0cc)
 
-![Screenshot (1171).png](attachment:829db155-051f-4989-8ae2-75f1db19d50d:Screenshot_(1171).png)
+![Screenshot_(1171)](https://github.com/user-attachments/assets/11d63a11-bcb6-4bfe-a585-c842f50ec436)
