@@ -2,7 +2,7 @@
 
 ## Description
 
-This project simulates a functional Security Operations Center (SOC) environment using the ELK stack and Elastic Defend for endpoint monitoring, a Fleet Server to manage Elastic agents, osTicket for incident management, a vulnerable Windows and SSH Server honeypot, Kali Linux to establish a Mythic C2 server. This Project includes alert creation for real-world brute-force attacks across geographic locations, investigation of command and control C2 activities using Mythic, dashboard visualizations, and integration with ticketing (osTicket) for alert and response management. The setup covers the emulation of a SOC as well as real brute force attacks and C2 activity showcasing an end-to-end workflow from detection to response across Windows and Linux environments.
+This project simulates a functional Security Operations Center (SOC) environment using the ELK stack and Elastic Defend for endpoint monitoring, a Fleet Server to manage Elastic agents, osTicket for incident management, a vulnerable Windows and SSH Server honeypot, Kali Linux to establish a Mythic C2 server. This Project includes alert creation for real-world brute-force attacks across geographic locations, investigation of command and control (C2) activities using Mythic, dashboard visualizations, and integration with ticketing (osTicket) for alert and response management. The setup covers the emulation of a SOC as well as real brute force attacks and C2 activity showcasing an end-to-end workflow from detection to response across Windows and Linux environments.
 
 ---
 
