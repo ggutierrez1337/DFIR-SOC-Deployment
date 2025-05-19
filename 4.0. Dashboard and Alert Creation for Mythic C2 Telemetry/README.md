@@ -1,6 +1,6 @@
 # 4.0. Dashboard and Alert Creation for Mythic C2 Telemetry
 
-# Mythic Telemetry
+## Mythic Telemetry
 
 4.0. In Elasticsearch select **Discover** and **New** 
 
