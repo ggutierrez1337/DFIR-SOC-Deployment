@@ -1,4 +1,4 @@
-# SOC Automation and Threat Detection Lab
+# End-to-End SOC Deployment and Incident Response
 
 ## Description
 
